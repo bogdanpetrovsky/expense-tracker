@@ -1,0 +1,49 @@
+<div class="dashboard-container">
+  <df-filters (filtersChanged)="filterTransactions($event)"></df-filters>
+  <div class="dashboard-content">
+    <div class="transaction-table-wrapper">
+      <table class="transactions-container" infiniteScroll
+             [infiniteScrollDistance]="2"
+             [infiniteScrollThrottle]="50">
+        <thead class="transactions-table-head">
+        <tr class="transactions-table-heading">
+          <th class="table-head-cell">NAME</th>
+          <th class="table-head-cell">AMOUNT</th>
+          <th class="table-head-cell">TYPE</th>
+          <th class="table-head-cell">CATEGORY</th>
+          <th class="table-head-cell">DATE</th>
+        </tr>
+        </thead>
+        <ng-container *ngFor="let transaction of transactions; trackBy: idTrackBy" class="transaction-wrapper">
+          <df-transaction-thumbnail
+            [transaction]="transaction"
+            (click)="selectTransaction(transaction)">
+          </df-transaction-thumbnail>
+        </ng-container>
+      </table>
+      <div class="total">
+        <span>Total: {{getTotal() | currency}}</span>
+      </div>
+      <div class="transaction-actions">
+        <button class="create-transaction primary-btn" (click)="onCreateTransactionClicked()">Add Transaction</button>
+      </div>
+    </div>
+  </div>
+  <div class="transaction-form-wrapper">
+    <df-transaction-form *ngIf="showForm"
+                         [transaction]="selectedTransaction"
+                         (transactionCreated)="saveTransaction($event)"
+                         (transactionDeleted)="deleteTransaction($event)">
+    </df-transaction-form>
+  </div>
+  <div *ngIf="!transactions || (transactions && !transactions.length)" class="empty-response-container">
+    <p>No transactions found!</p>
+  </div>
+  <div class="creation-success" *ngIf="creationSuccess">
+    <p>Transaction created/updated successfully!</p>
+  </div>
+  <div class="creation-errors" *ngIf="creationErrors && creationErrors.length">
+    <p>Failed to create/update transaction:</p>
+    <ul><li *ngFor="let error of creationErrors">{{ error }}</li></ul>
+  </div>
+</div>

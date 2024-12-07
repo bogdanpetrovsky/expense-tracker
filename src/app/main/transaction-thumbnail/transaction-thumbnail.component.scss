@@ -1,0 +1,43 @@
+@import "color-variables";
+
+$base-spacing-unit: 24px;
+$half-spacing-unit: 12px;
+
+$color-alpha: #1772FF;
+$color-form-highlight: #f5f5f5;
+
+.table-row-wrapper {
+  background:$color-form-highlight;
+}
+
+.thumbnail-column {
+  text-align: left;
+  font-size: 12px;
+  padding: 15px 5px;
+
+  &.red {
+    color: red;
+  }
+
+  &.green {
+    color: green;
+  }
+
+  &.description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+:host {
+  width: 100%;
+  display: contents;
+}
+
+@media screen and (min-width: 725px) {
+  .thumbnail-column {
+    font-size: 14px;
+    padding: 25px;
+  }
+}

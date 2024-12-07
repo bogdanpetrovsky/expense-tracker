@@ -1,0 +1,45 @@
+@import "color-variables";
+
+.transaction-form-container {
+  background: $default-bg-color;
+  border-radius: 12px;
+  padding: 25px;
+  color: grey;
+
+  .transaction-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: black;
+
+    .transaction-form-title {
+      margin: 10px 0 20px;
+    }
+
+    .close-icon {
+      cursor: pointer;
+    }
+  }
+
+  .transaction-form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .transaction-form-actions {
+    display: flex;
+    justify-content: center;
+
+    &.multiple-actions {
+      justify-content: space-between;
+    }
+  }
+
+  .validation-errors {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+}

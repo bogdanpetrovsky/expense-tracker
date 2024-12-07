@@ -1,0 +1,27 @@
+<div class="filters-container">
+  <form class="filters-form" [formGroup]="filtersForm">
+    <mat-form-field class="filters-search form-input" appearance="outline">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput formControlName="name" placeholder="Search by name or category">
+    </mat-form-field>
+
+    <mat-form-field class="form-input" appearance="outline">
+      <mat-label>Transaction Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option [value]="null">Any</mat-option>
+        <mat-option value="income">Income</mat-option>
+        <mat-option value="expense">Expense</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width form-input" appearance="outline">
+      <mat-label>Sort</mat-label>
+      <mat-select formControlName="sort">
+        <mat-option value="amount-asc">Amount (Low to High)</mat-option>
+        <mat-option value="amount-desc">Amount (High to Low)</mat-option>
+        <mat-option value="date-asc">Date (Oldest to Newest)</mat-option>
+        <mat-option value="date-desc">Date (Newest to Oldest)</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>

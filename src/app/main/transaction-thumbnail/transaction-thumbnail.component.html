@@ -1,0 +1,10 @@
+<tr class="table-row-wrapper">
+  <td class="thumbnail-column description">{{ transaction.name }}</td>
+  <td class="thumbnail-column">{{ transaction.amount | currency }}</td>
+  <td class="thumbnail-column"
+      [ngClass]="{'green': transaction.type === 'income', 'red': transaction.type === 'expense'}">
+    {{ transaction.type | titlecase }}
+  </td>
+  <td class="thumbnail-column">{{ transaction.category }}</td>
+  <td class="thumbnail-column">{{ transaction.date | date: 'shortDate' }}</td>
+</tr>

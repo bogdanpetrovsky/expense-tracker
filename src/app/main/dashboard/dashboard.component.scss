@@ -1,0 +1,123 @@
+@import "layout-variables";
+@import "color-variables";
+
+.dashboard-container {
+  margin: $offset-sm;
+  color: $text-color;
+  padding-bottom: 100px;
+
+  .transactions-container {
+    border: 1px solid #d7d7d7;
+    border-radius: 12px;
+    border-spacing: 0 5px;
+    background: $default-bg-color;
+    table-layout: fixed;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .transaction-actions {
+    margin: 10px 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .transactions-table-head {
+    background: $default-bg-color;
+  }
+
+  .transactions-table-heading {
+    text-align: left;
+    background: $default-bg-color;
+    border-radius: 12px;
+    color: grey;
+    font-size: 12px;
+
+    .table-head-cell {
+      padding: 15px 5px;
+    }
+  }
+
+  .sort-buttons {
+    .sort-button {
+      margin-right: 10px;
+    }
+  }
+
+  .empty-response-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 400px;
+    font-size: 20px;
+  }
+
+  .creation-success, .creation-errors {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 12px;
+    position: fixed;
+    top: 25px;
+    color: white;
+  }
+
+  .total {
+    float: right;
+  }
+
+  .creation-success {
+    background: green;
+    right: 25px;
+  }
+
+  .creation-errors {
+    background: red;
+    left: 25px;
+  }
+
+  @media screen and (min-width: 725px) {
+    margin: $offset-lg;
+
+    .transactions-table-heading {
+      font-size: 16px;
+      background: $default-bg-color;
+      border-radius: 12px;
+      .table-head-cell {
+        padding: 25px;
+        border-radius: 12px;
+      }
+    }
+
+    .transaction-table-wrapper {
+      max-height: 800px;
+      overflow: auto;
+      width: 100%;
+    }
+
+    .dashboard-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .transaction-form-wrapper {
+        display: none;
+      }
+
+      &.shrinked {
+        .transaction-table-wrapper {
+          width: 66%;
+        }
+
+        .transaction-form-wrapper {
+          display: block;
+          width: 33%;
+        }
+      }
+
+      .transactions-container {
+        width: 100%;
+      }
+    }
+  }
+}

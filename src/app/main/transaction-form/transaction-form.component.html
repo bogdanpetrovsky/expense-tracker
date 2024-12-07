@@ -1,0 +1,36 @@
+<div class="transaction-form-container">
+  <div class="transaction-form-header">
+    <span class="transaction-form-title">
+      {{ transaction ? transaction.name : 'Add New Transaction' }}
+    </span>
+    <strong class="close-icon" (click)="close()">X</strong>
+  </div>
+  <div class="transaction-form-content" [formGroup]="transactionForm">
+    <label for="name">Transaction Name</label>
+    <input id="name" class="primary-input" type="text" formControlName="name" required>
+
+    <label for="amount">Amount</label>
+    <input id="amount" class="primary-input" type="number" step="0.01" formControlName="amount" required>
+
+    <label for="type">Type</label>
+    <select id="type" class="primary-input primary-select" formControlName="type" required>
+      <option value="income">Income</option>
+      <option value="expense">Expense</option>
+    </select>
+
+    <label for="category">Category</label>
+    <input id="category" class="primary-input" type="text" formControlName="category" required>
+
+    <label for="date">Date</label>
+    <input id="date" class="primary-input" type="date" formControlName="date">
+
+    <div class="validation-errors" *ngIf="transactionForm" dfFormValidationErrors [group]="transactionForm">
+    </div>
+  </div>
+  <div class="transaction-form-actions" [ngClass]="{'multiple-actions': transaction}">
+    <button class="delete-transaction secondary-btn" *ngIf="transaction" (click)="deleteTransaction()">Delete</button>
+    <button class="create-transaction primary-btn" (click)="createTransaction()">
+      {{ transaction ? 'Update' : 'Add' }} Transaction
+    </button>
+  </div>
+</div>
